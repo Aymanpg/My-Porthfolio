@@ -29,6 +29,11 @@ section h2 {
     background-color: #0e68c1;
     text-align: center;
 }
+section h3 {
+    color: #02060a;
+    margin-bottom: 10px;
+    text-align: left;
+}
 figure {
     text-align: center;
     margin: 20px;
