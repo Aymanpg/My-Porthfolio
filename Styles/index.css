@@ -8,7 +8,6 @@ nav li {
     list-style: none;
     display: inline;
     margin-right: 15px;
-    align-items: center;
 }
 nav li a {
     
@@ -32,8 +31,8 @@ section h2 {
 }
 figure {
     text-align: center;
-    margin: 20px 0;
-    width: 100%;
+    margin: 20px;
+    width: 50%;
 }
 figcaption {
     font-style: italic;
