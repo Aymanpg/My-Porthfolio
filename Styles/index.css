@@ -1,0 +1,42 @@
+header {
+    background-color: #0e68c1;
+    padding: 20px;
+    text-align: center;
+}
+nav li {
+
+    list-style: none;
+    display: inline;
+    margin-right: 15px;
+    align-items: center;
+}
+nav li a {
+    
+    text-decoration: none;
+
+}
+nav li a:hover {
+
+    color: rgb(255, 174, 0);
+}
+section {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+section h2 {
+    color: #02060a;
+    background-color: #0e68c1;
+    text-align: center;
+}
+figure {
+    text-align: center;
+    margin: 20px 0;
+    width: 100%;
+}
+figcaption {
+    font-style: italic;
+    margin-bottom: 20px;
+    color: black;
+}
