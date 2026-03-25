@@ -2,16 +2,24 @@ header {
     background-color: #0e68c1;
     padding: 20px;
     text-align: center;
+    border-radius: 10px;
 }
+    figure {
+        margin: 10px;
+        text-align: left;
+    }
 nav li {
 
     list-style: none;
     display: inline;
+    text-decoration-color: #02060a;
     margin-right: 15px;
 }
 nav li a {
     
     text-decoration: none;
+    color: white;
+    font-weight: bold;
 
 }
 nav li a:hover {
@@ -26,8 +34,11 @@ section {
 }
 section h2 {
     color: #02060a;
-    background-color: #0e68c1;
+    background-color: #0e68c1;;
     text-align: center;
+    padding: 10px;
+    margin-top: 0%;
+    border-radius: 5px;
 }
 section h3 {
     color: #02060a;
@@ -37,7 +48,7 @@ section h3 {
 figure {
     text-align: center;
     margin: 20px;
-    width: 50%;
+    width: auto;
 }
 figcaption {
     font-style: italic;
