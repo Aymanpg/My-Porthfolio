@@ -3,107 +3,650 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="Styles/index.css">
-</head>
-<body>
-    <header>
-        <h1>Welcome to My Portfolio
-            <figure>
-                <img width="150" height="150" src="images/Ay.png" alt="Aymanur Rahman">
-        </h1>
+    <title>Aymanur Rahman | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
 
-        <nav>
-            <ul>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        :root {
+            --primary: #0ea5e9;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* ── Nav link underline ── */
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(to right, #0ea5e9, #3b82f6);
+            border-radius: 9999px;
+            transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* ── Section header underline ── */
+        .section-header {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            width: 56px;
+            height: 4px;
+            background: linear-gradient(to right, #0ea5e9, #3b82f6);
+            bottom: 0;
+            left: 0;
+            border-radius: 9999px;
+        }
+
+        .section-header.light::after {
+            background: linear-gradient(to right, #38bdf8, #93c5fd);
+        }
+
+        /* ── Project card hover ── */
+        .project-card {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -12px rgba(14, 165, 233, 0.35);
+        }
+
+        /* ── Contact card hover ── */
+        .contact-item {
+            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                        box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                        border-color 0.25s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.1);
+            border-color: #bae6fd !important;
+        }
+
+        /* ── Skill card hover ── */
+        .skill-card {
+            transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+        }
+
+        .skill-card:hover {
+            background: rgba(255, 255, 255, 0.18) !important;
+            border-color: #38bdf8 !important;
+            transform: translateY(-3px);
+        }
+
+        /* ── Research card ── */
+        .research-card {
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .research-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px -8px rgba(14, 165, 233, 0.2);
+            border-color: #bae6fd;
+        }
+
+        /* ── Smooth scroll ── */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ── Mobile menu animation ── */
+        #mobile-menu {
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        #mobile-menu.open {
+            max-height: 400px;
+            opacity: 1;
+        }
+
+        /* ── Email truncation on small screens ── */
+        .email-text {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* ── Hero gradient badge ── */
+        .hero-badge {
+            background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
+        }
+
+        /* ── Animated pulse dot ── */
+        @keyframes pulse-ring {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.4); }
+        }
+
+        .pulse-dot {
+            animation: pulse-ring 2s ease-in-out infinite;
+        }
+
+        /* ── Scroll-reveal fade ── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- ─────────────── HEADER / NAV ─────────────── -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+            <!-- Logo / Name -->
+            <div class="flex items-center gap-x-3">
+                <img src="images/Ay.png" alt="Aymanur Rahman profile photo"
+                     width="56" height="56"
+                     class="rounded-2xl object-cover border-2 border-sky-200 flex-shrink-0">
+                <div class="flex flex-col">
+                    <h1 class="heading-font text-xl font-semibold tracking-tight leading-tight">Aymanur Rahman</h1>
+                    <p class="text-xs text-slate-500 mt-0.5">CSE Student &bull; AI &amp; Data Science Enthusiast</p>
+                </div>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-x-1" aria-label="Main navigation">
+                <ul class="flex items-center gap-x-1 text-sm font-medium list-none m-0 p-0">
+                    <li><a href="#introduction" class="nav-link text-slate-600 hover:text-sky-600 px-3 py-2 rounded-xl hover:bg-sky-50 transition-colors">Home</a></li>
+                    <li><a href="#about"        class="nav-link text-slate-600 hover:text-sky-600 px-3 py-2 rounded-xl hover:bg-sky-50 transition-colors">About</a></li>
+                    <li><a href="#projects"     class="nav-link text-slate-600 hover:text-sky-600 px-3 py-2 rounded-xl hover:bg-sky-50 transition-colors">Projects</a></li>
+                    <li><a href="#research"     class="nav-link text-slate-600 hover:text-sky-600 px-3 py-2 rounded-xl hover:bg-sky-50 transition-colors">Research</a></li>
+                    <li><a href="#skills"       class="nav-link text-slate-600 hover:text-sky-600 px-3 py-2 rounded-xl hover:bg-sky-50 transition-colors">Skills</a></li>
+                    <li><a href="#contact"      class="nav-link text-slate-600 hover:text-sky-600 px-3 py-2 rounded-xl hover:bg-sky-50 transition-colors">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu"
+                    class="md:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 hover:bg-slate-200 transition-colors">
+                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+            <div class="flex flex-col gap-y-1 px-6 pb-4 pt-2 bg-white border-t border-slate-100">
+                <a href="#introduction" class="py-2.5 px-4 hover:bg-slate-100 rounded-xl text-sm font-medium transition-colors">Home</a>
+                <a href="#about"        class="py-2.5 px-4 hover:bg-slate-100 rounded-xl text-sm font-medium transition-colors">About</a>
+                <a href="#projects"     class="py-2.5 px-4 hover:bg-slate-100 rounded-xl text-sm font-medium transition-colors">Projects</a>
+                <a href="#research"     class="py-2.5 px-4 hover:bg-slate-100 rounded-xl text-sm font-medium transition-colors">Research</a>
+                <a href="#skills"       class="py-2.5 px-4 hover:bg-slate-100 rounded-xl text-sm font-medium transition-colors">Skills</a>
+                <a href="#contact"      class="py-2.5 px-4 hover:bg-slate-100 rounded-xl text-sm font-medium transition-colors">Contact</a>
+            </div>
+        </div>
     </header>
 
-    <main>
+    <main class="max-w-7xl mx-auto px-6">
 
-        <section id="introduction">
-            <h2>Introduction</h2>
-            <p>Hello! I'm Aymanur Rahman. I am a student of Undergraduate . Welcome to my portfolio website where I showcase my work and skills.</p>
+        <!-- ─────────────── HERO ─────────────── -->
+        <section id="introduction" class="pt-16 pb-20 grid md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-7 fade-in">
+                <div class="inline-flex items-center gap-x-2 hero-badge text-sky-700 text-xs font-semibold px-4 h-8 rounded-full mb-6 border border-sky-200">
+                    <div class="w-2 h-2 bg-sky-500 rounded-full pulse-dot flex-shrink-0"></div>
+                    Seeking internship &amp; real-world projects
+                </div>
+                <h2 class="text-5xl md:text-6xl font-semibold heading-font leading-none tracking-tighter mb-6">
+                    Hello! I'm<br>
+                    <span class="text-sky-600">Aymanur Rahman</span>
+                </h2>
+                <p class="text-lg text-slate-600 max-w-lg leading-relaxed">
+                    Undergraduate CSE student passionate about
+                    <span class="font-semibold text-sky-600">Data Science</span>,
+                    <span class="font-semibold text-sky-600">Artificial Intelligence</span>,
+                    and building intelligent systems that solve real-world problems.
+                </p>
+                <div class="mt-8 flex flex-wrap items-center gap-3">
+                    <a href="#projects"
+                       class="inline-flex items-center justify-center bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-white font-semibold px-7 h-12 rounded-2xl text-base transition-colors shadow-md shadow-sky-200">
+                        View My Projects
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                    <a href="#contact"
+                       class="inline-flex items-center justify-center border-2 border-slate-800 hover:bg-slate-800 hover:text-white font-semibold px-7 h-12 rounded-2xl text-base transition-colors">
+                        Get In Touch
+                    </a>
+                </div>
+
+                <!-- Quick stats -->
+                <div class="mt-10 flex flex-wrap gap-6">
+                    <div class="text-center">
+                        <p class="text-2xl font-bold text-sky-600 heading-font">4+</p>
+                        <p class="text-xs text-slate-500 mt-0.5">Projects Built</p>
+                    </div>
+                    <div class="w-px bg-slate-200"></div>
+                    <div class="text-center">
+                        <p class="text-2xl font-bold text-sky-600 heading-font">2</p>
+                        <p class="text-xs text-slate-500 mt-0.5">Research Works</p>
+                    </div>
+                    <div class="w-px bg-slate-200"></div>
+                    <div class="text-center">
+                        <p class="text-2xl font-bold text-sky-600 heading-font">5+</p>
+                        <p class="text-xs text-slate-500 mt-0.5">Tech Stacks</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Image -->
+            <div class="md:col-span-5 flex justify-center fade-in">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-sky-200 rounded-3xl translate-x-3 translate-y-3 -z-10"></div>
+                    <img src="images/Ay.png" alt="Aymanur Rahman"
+                         width="320" height="320"
+                         class="rounded-3xl shadow-2xl border-4 border-white object-cover relative z-10">
+                    <div class="absolute -bottom-4 -right-4 bg-white shadow-xl rounded-2xl px-4 py-3 flex items-center gap-x-2 border border-slate-100 z-20">
+                        <span class="text-base">📍</span>
+                        <p class="font-semibold text-sm text-slate-700">Dhaka, Bangladesh</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
-         <section id="about">
-        <h2>About Me</h2>
-        <p>I am Ayman, a Computer Science and Engineering (CSE) student with a strong interest in Data Science, Artificial Intelligence, and intelligent software systems. Currently, I am completing my undergraduate studies while building both academic and practical experience in software development, data analysis, and machine learning.
+        <!-- ─────────────── ABOUT ─────────────── -->
+        <section id="about" class="py-20 bg-white -mx-6 px-6 md:px-16 rounded-3xl fade-in">
+            <div class="max-w-4xl">
+                <h2 class="section-header text-4xl font-semibold heading-font mb-10">About Me</h2>
+                <div class="space-y-5 text-lg text-slate-600 leading-relaxed">
+                    <p>I am <strong class="text-slate-800 font-semibold">Ayman</strong>, a Computer Science and Engineering (CSE) student with a strong interest in Data Science, Artificial Intelligence, and intelligent software systems. Currently completing my undergraduate studies while building both academic and practical experience in software development, data analysis, and machine learning.</p>
+                    <p>My academic background has given me a solid foundation in programming, databases, web technologies, computer networks, and machine learning. Alongside coursework, I enjoy working on real-world projects such as web-based systems and data-driven applications, focusing on writing clean, structured, and scalable code.</p>
+                    <p>I am particularly interested in AI-based problem solving. My research includes smartphone-based skin disease detection using deep learning, reflecting my passion for applying technology to meaningful real-life problems.</p>
+                    <p>I believe in continuous learning, ethical computing, and human-centered design. My goal is to grow as a data-driven engineer and researcher who can build impactful solutions through technology.</p>
+                </div>
 
-My academic background has given me a solid foundation in programming, databases, web technologies, computer networks, and machine learning. Alongside coursework, I enjoy working on real-world projects such as web-based systems and data-driven applications, where I focus on writing clean, structured, and scalable code.
+                <!-- Education badge -->
+                <div class="mt-8 inline-flex items-center gap-x-3 bg-sky-50 border border-sky-200 rounded-2xl px-5 py-3">
+                    <span class="text-2xl">🎓</span>
+                    <div>
+                        <p class="text-sm font-semibold text-sky-800">B.Sc. in Computer Science &amp; Engineering</p>
+                        <p class="text-xs text-sky-600 mt-0.5">Undergraduate Student &bull; Dhaka, Bangladesh</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-I am particularly interested in AI-based problem solving, and my research work includes smartphone-based skin disease detection using deep learning, which reflects my passion for applying technology to meaningful real-life problems. I aim to further strengthen my research profile and technical skills to pursue a Master’s degree in AI/Data Science in Germany in the future.
+        <!-- ─────────────── PROJECTS ─────────────── -->
+        <section id="projects" class="py-20 fade-in">
+            <h2 class="section-header text-4xl font-semibold heading-font mb-12">Featured Projects</h2>
 
-I believe in continuous learning, ethical computing, and human-centered design. My goal is to grow as a data-driven engineer and researcher who can build impactful solutions through technology.s</p>
-    </section>
+            <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <ul>
-            <li><h3> Mini Market Management System.</h3> </li>
-            <p> Its a desktop application developed using C# and MySQL. </p>
-            <figure>
-                 <img width= 50% src="images/image of Minimarket.png" alt="Project 1">
-                 <figcaption>Mini Market Management System Landing Page</figcaption>
-                 <img width= 50% src="images/Customer dashboard.png" alt="Project 1">
-                 <figcaption>Customer Dashboard of Mini Market Management System</figcaption>
+                <!-- Project 1: Mini Market -->
+                <article class="project-card bg-white border border-slate-200 rounded-3xl overflow-hidden flex flex-col">
+                    <div class="p-6 flex-1">
+                        <div class="flex items-start justify-between mb-3">
+                            <span class="text-xs font-semibold bg-purple-100 text-purple-700 px-3 py-1 rounded-full">Desktop App</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 leading-snug">Mini Market Management System</h3>
+                        <p class="text-slate-500 text-sm mb-5 leading-relaxed">Desktop application developed using C# and MySQL for efficient inventory, sales, and customer management.</p>
 
-            </figure>
+                        <div class="flex gap-2 flex-wrap mb-5">
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">C#</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">MySQL</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">.NET</span>
+                        </div>
 
-            <li><h3>Hotel Reservation Management System.</h3></li>
-            <p>Its a web application developed using HTML, CSS, JavaScript, PHP, and MySQL. </p>
-            <figure>
-                <img width= 50% src="images/Hotel reservation.png" alt="Project 2">
-                <figcaption>Hotel Reservation Management System Landing Page</figcaption>
-            </figure>
+                        <div class="grid grid-cols-2 gap-3">
+                            <figure class="rounded-2xl overflow-hidden border border-slate-100 m-0">
+                                <img src="images/image of Minimarket.png" alt="Mini Market landing page screenshot" class="w-full h-40 object-cover">
+                                <figcaption class="text-xs text-center text-slate-400 py-1.5">Landing Page</figcaption>
+                            </figure>
+                            <figure class="rounded-2xl overflow-hidden border border-slate-100 m-0">
+                                <img src="images/Customer dashboard.png" alt="Customer Dashboard screenshot" class="w-full h-40 object-cover">
+                                <figcaption class="text-xs text-center text-slate-400 py-1.5">Dashboard</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="border-t border-slate-100 p-4">
+                        <a href="https://github.com/Aymanpg/Market-Management-System" target="_blank" rel="noopener noreferrer"
+                           class="flex items-center justify-center gap-x-2 bg-slate-900 hover:bg-black text-white font-medium h-10 rounded-xl text-sm transition-colors w-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.23 1.84 1.23 1.07 1.84 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.01 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                            View on GitHub
+                        </a>
+                    </div>
+                </article>
 
-            <li><h3>To-let Management System.</h3></li>
-            <p>Its a web application developed using HTML, CSS, JavaScript, PHP, and MySQL. </p>
-            <figure>
-                <img  src="images/To-let.png" alt="Project 3"> 
-                <figcaption>To-let Management System Logo</figcaption>
-            </figure>
-        </ul>
-    </section>
+                <!-- Project 2: Hotel Reservation -->
+                <article class="project-card bg-white border border-slate-200 rounded-3xl overflow-hidden flex flex-col">
+                    <div class="p-6 flex-1">
+                        <div class="flex items-start justify-between mb-3">
+                            <span class="text-xs font-semibold bg-sky-100 text-sky-700 px-3 py-1 rounded-full">Web App</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 leading-snug">Hotel Reservation Management System</h3>
+                        <p class="text-slate-500 text-sm mb-5 leading-relaxed">Full-stack web application for hotel booking and management built with HTML, CSS, JavaScript, PHP &amp; MySQL.</p>
 
-    <section id="research">
-        <h2>Research</h2>
-        <ul>
-            <li>XG-Boost and temporal Feature Engineering to precise CO emission in Dhaka City </li>
-            <p> In this research, I worked on predicting CO emissions in Dhaka City using XG-Boost and temporal feature engineering techniques. The study aimed to develop a robust model that can accurately forecast CO levels based on various environmental and temporal factors.</p>
-            <li>Smartphone-Based Skin Disease Detection Using Deep Learning</li>
-            <p> This research focused on developing a smartphone application that utilizes deep learning algorithms to detect skin diseases. The application aims to provide users with a convenient tool for early diagnosis and treatment recommendations based on image analysis of skin conditions.</p>
-            
-        </ul>
-    </section>
+                        <div class="flex gap-2 flex-wrap mb-5">
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">PHP</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">MySQL</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">JavaScript</span>
+                        </div>
 
-    <section section id="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>Programming Languages: Python, Java, C#, JavaScript</li>
-            <li>Web Development: HTML, CSS, PHP, MySQL</li>
-            <li>Data Analysis: Pandas, NumPy, Matplotlib</li>
-            <li>Machine Learning: Scikit-learn, TensorFlow</li>
-            <li>Version Control: Git, GitHub</li>
-        </ul>
+                        <figure class="rounded-2xl overflow-hidden border border-slate-100 m-0">
+                            <img src="images/Hotel reservation.png" alt="Hotel Reservation landing page screenshot" class="w-full h-44 object-cover">
+                            <figcaption class="text-xs text-center text-slate-400 py-1.5">Landing Page</figcaption>
+                        </figure>
+                    </div>
+                    <div class="border-t border-slate-100 p-4">
+                        <a href="https://github.com/Aymanpg/Hotel-Reservation" target="_blank" rel="noopener noreferrer"
+                           class="flex items-center justify-center gap-x-2 bg-slate-900 hover:bg-black text-white font-medium h-10 rounded-xl text-sm transition-colors w-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.23 1.84 1.23 1.07 1.84 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.01 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                            View on GitHub
+                        </a>
+                    </div>
+                </article>
 
-    </section>
+                <!-- Project 3: To-Let -->
+                <article class="project-card bg-white border border-slate-200 rounded-3xl overflow-hidden flex flex-col">
+                    <div class="p-6 flex-1">
+                        <div class="flex items-start justify-between mb-3">
+                            <span class="text-xs font-semibold bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full">Web App</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 leading-snug">To-Let Management System</h3>
+                        <p class="text-slate-500 text-sm mb-5 leading-relaxed">Web platform for rental property listing and management developed with HTML, CSS, JavaScript, PHP &amp; MySQL.</p>
 
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>You can reach me at
-            <a href="mailto:aymanrahman375@gmail.com">aymanrahman375@gmail.com </a>
+                        <div class="flex gap-2 flex-wrap mb-5">
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">PHP</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">MySQL</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">HTML/CSS</span>
+                        </div>
+
+                        <figure class="rounded-2xl overflow-hidden border border-slate-100 m-0">
+                            <img src="images/To-let.png" alt="To-Let project logo" class="w-full h-44 object-cover">
+                            <figcaption class="text-xs text-center text-slate-400 py-1.5">Project Logo</figcaption>
+                        </figure>
+                    </div>
+                    <div class="border-t border-slate-100 p-4">
+                        <a href="https://github.com/Aymanpg/To-let-Mangement-System" target="_blank" rel="noopener noreferrer"
+                           class="flex items-center justify-center gap-x-2 bg-slate-900 hover:bg-black text-white font-medium h-10 rounded-xl text-sm transition-colors w-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.23 1.84 1.23 1.07 1.84 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.01 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                            View on GitHub
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 4: Digitool -->
+                <article class="project-card bg-white border border-slate-200 rounded-3xl overflow-hidden flex flex-col md:col-span-2 xl:col-span-1">
+                    <div class="p-6 flex-1">
+                        <div class="flex items-start justify-between mb-3">
+                            <span class="text-xs font-semibold bg-amber-100 text-amber-700 px-3 py-1 rounded-full">Live Project</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 leading-snug">Digitool</h3>
+                        <p class="text-slate-500 text-sm mb-5 leading-relaxed">Modern digital tools web application featuring various productivity utilities and smart features.</p>
+
+                        <div class="flex gap-2 flex-wrap mb-5">
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">HTML</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">CSS</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">JavaScript</span>
+                        </div>
+
+                        <figure class="rounded-2xl overflow-hidden border border-slate-100 m-0">
+                            <img src="images/Digtools.jpg" alt="Digitool interface screenshot" class="w-full h-44 object-cover">
+                            <figcaption class="text-xs text-center text-slate-400 py-1.5">Digitool Interface</figcaption>
+                        </figure>
+                    </div>
+                    <div class="border-t border-slate-100 p-4 flex gap-3">
+                        <a href="https://github.com/Aymanpg/digitools" target="_blank" rel="noopener noreferrer"
+                           class="flex-1 flex items-center justify-center gap-x-2 bg-slate-900 hover:bg-black text-white font-medium h-10 rounded-xl text-sm transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.23 1.84 1.23 1.07 1.84 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.01 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                            GitHub
+                        </a>
+                        <a href="https://comforting-naiad-98f49a.netlify.app/" target="_blank" rel="noopener noreferrer"
+                           class="flex-1 flex items-center justify-center gap-x-2 bg-emerald-50 border border-emerald-200 hover:bg-emerald-100 text-emerald-700 font-medium h-10 rounded-xl text-sm transition-colors">
+                            Live Demo
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ─────────────── RESEARCH ─────────────── -->
+        <section id="research" class="py-20 bg-white -mx-6 px-6 md:px-16 rounded-3xl fade-in">
+            <h2 class="section-header text-4xl font-semibold heading-font mb-12">Research Work</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+
+                <article class="research-card bg-gradient-to-br from-sky-50 to-blue-50 p-8 rounded-3xl border border-sky-100">
+                    <div class="flex items-center gap-x-3 mb-4">
+                        <div class="w-10 h-10 bg-sky-100 rounded-2xl flex items-center justify-center text-xl flex-shrink-0">🌿</div>
+                        <span class="text-xs font-semibold bg-sky-100 text-sky-700 px-3 py-1 rounded-full">Environmental ML</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3 leading-snug">XGBoost and Temporal Feature Engineering for Precise CO Emission Prediction in Dhaka City</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Developed a robust machine learning model using XGBoost with temporal feature engineering to accurately forecast CO emission levels based on environmental and time-based factors.</p>
+                </article>
+
+                <article class="research-card bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-3xl border border-purple-100">
+                    <div class="flex items-center gap-x-3 mb-4">
+                        <div class="w-10 h-10 bg-purple-100 rounded-2xl flex items-center justify-center text-xl flex-shrink-0">🔬</div>
+                        <span class="text-xs font-semibold bg-purple-100 text-purple-700 px-3 py-1 rounded-full">Deep Learning</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3 leading-snug">Smartphone-Based Skin Disease Detection Using Deep Learning</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Built a mobile application that leverages deep learning algorithms to detect various skin diseases from images, providing early diagnosis and treatment recommendations.</p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ─────────────── SKILLS ─────────────── -->
+        <section id="skills" class="py-20 bg-slate-900 text-white rounded-3xl -mx-6 px-6 md:px-16 fade-in">
+            <h2 class="section-header light text-4xl font-semibold heading-font mb-12 text-white">Technical Skills</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+
+                <div class="skill-card bg-white/10 border border-white/10 rounded-2xl p-5 text-center">
+                    <div class="text-2xl mb-3">💻</div>
+                    <p class="font-semibold text-sm mb-2">Languages</p>
+                    <p class="text-slate-400 text-xs leading-relaxed">Python &bull; Java &bull; C# &bull; JavaScript</p>
+                </div>
+
+                <div class="skill-card bg-white/10 border border-white/10 rounded-2xl p-5 text-center">
+                    <div class="text-2xl mb-3">🌐</div>
+                    <p class="font-semibold text-sm mb-2">Web Development</p>
+                    <p class="text-slate-400 text-xs leading-relaxed">HTML &bull; CSS &bull; PHP &bull; MySQL</p>
+                </div>
+
+                <div class="skill-card bg-white/10 border border-white/10 rounded-2xl p-5 text-center">
+                    <div class="text-2xl mb-3">📊</div>
+                    <p class="font-semibold text-sm mb-2">Data Analysis</p>
+                    <p class="text-slate-400 text-xs leading-relaxed">Pandas &bull; NumPy &bull; Matplotlib</p>
+                </div>
+
+                <div class="skill-card bg-white/10 border border-white/10 rounded-2xl p-5 text-center">
+                    <div class="text-2xl mb-3">🤖</div>
+                    <p class="font-semibold text-sm mb-2">Machine Learning</p>
+                    <p class="text-slate-400 text-xs leading-relaxed">Scikit-learn &bull; TensorFlow &bull; XGBoost</p>
+                </div>
+
+                <div class="skill-card bg-white/10 border border-white/10 rounded-2xl p-5 text-center">
+                    <div class="text-2xl mb-3">🛠️</div>
+                    <p class="font-semibold text-sm mb-2">Tools</p>
+                    <p class="text-slate-400 text-xs leading-relaxed">Git &bull; GitHub &bull; VS Code</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ─────────────── CONTACT ─────────────── -->
+        <section id="contact" class="py-20 fade-in">
+            <h2 class="section-header text-4xl font-semibold heading-font mb-4">Let's Connect</h2>
+            <p class="text-slate-500 text-lg mb-10 mt-6 max-w-xl">
+                I'm always excited to connect! Whether it's about opportunities, collaborations, or just a quick chat — feel free to reach out.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl">
+
+                <!-- Phone -->
+                <a href="tel:+8801610129402"
+                   class="contact-item flex items-center gap-x-4 bg-white p-5 rounded-2xl border border-slate-200">
+                    <div class="w-12 h-12 bg-sky-100 flex items-center justify-center rounded-xl flex-shrink-0 text-xl">📱</div>
+                    <div class="min-w-0">
+                        <p class="text-xs font-medium text-slate-400 uppercase tracking-wide mb-0.5">Phone</p>
+                        <p class="text-base font-semibold text-slate-800">+880 1610-129402</p>
+                    </div>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:aymanrahman375@gmail.com"
+                   class="contact-item flex items-center gap-x-4 bg-white p-5 rounded-2xl border border-slate-200">
+                    <div class="w-12 h-12 bg-sky-100 flex items-center justify-center rounded-xl flex-shrink-0 text-xl">✉️</div>
+                    <div class="min-w-0 overflow-hidden">
+                        <p class="text-xs font-medium text-slate-400 uppercase tracking-wide mb-0.5">Email</p>
+                        <p class="text-base font-semibold text-slate-800 email-text">aymanrahman375@gmail.com</p>
+                    </div>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/aymanur-rahman-776947336/" target="_blank" rel="noopener noreferrer"
+                   class="contact-item flex items-center gap-x-4 bg-white p-5 rounded-2xl border border-slate-200">
+                    <div class="w-12 h-12 bg-sky-100 flex items-center justify-center rounded-xl flex-shrink-0 text-xl">🔗</div>
+                    <div class="min-w-0">
+                        <p class="text-xs font-medium text-slate-400 uppercase tracking-wide mb-0.5">LinkedIn</p>
+                        <p class="text-base font-semibold text-slate-800">Aymanur Rahman</p>
+                        <p class="text-xs text-sky-600 font-medium">View Profile →</p>
+                    </div>
+                </a>
+
+                <!-- GitHub -->
+                <a href="https://github.com/Aymanpg" target="_blank" rel="noopener noreferrer"
+                   class="contact-item flex items-center gap-x-4 bg-white p-5 rounded-2xl border border-slate-200">
+                    <div class="w-12 h-12 bg-sky-100 flex items-center justify-center rounded-xl flex-shrink-0 text-xl">🐙</div>
+                    <div class="min-w-0">
+                        <p class="text-xs font-medium text-slate-400 uppercase tracking-wide mb-0.5">GitHub</p>
+                        <p class="text-base font-semibold text-slate-800">@Aymanpg</p>
+                        <p class="text-xs text-sky-600 font-medium">View Repositories →</p>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
     </main>
 
-
-
-   
-
-    <footer>
-        <p>&copy; 2024 Aymanur Rahman. All rights reserved.</p>
+    <!-- ─────────────── FOOTER ─────────────── -->
+    <footer class="bg-slate-900 text-slate-400 py-10 mt-4">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="heading-font font-semibold text-white text-lg mb-1">Aymanur Rahman</p>
+            <p class="text-sm text-slate-500 mb-4">CSE Student &bull; AI &amp; Data Science Enthusiast</p>
+            <div class="flex justify-center gap-x-6 mb-6 text-xs">
+                <a href="#introduction" class="hover:text-sky-400 transition-colors">Home</a>
+                <a href="#about"        class="hover:text-sky-400 transition-colors">About</a>
+                <a href="#projects"     class="hover:text-sky-400 transition-colors">Projects</a>
+                <a href="#research"     class="hover:text-sky-400 transition-colors">Research</a>
+                <a href="#skills"       class="hover:text-sky-400 transition-colors">Skills</a>
+                <a href="#contact"      class="hover:text-sky-400 transition-colors">Contact</a>
+            </div>
+            <p class="text-xs text-slate-500">&copy; <span id="footer-year"></span> Aymanur Rahman. All rights reserved.</p>
+            <p class="text-xs text-slate-600 mt-1">Built with passion in Dhaka, Bangladesh 🇧🇩</p>
+        </div>
     </footer>
+
+    <script>
+        /* ── Dynamic footer year ── */
+        document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+        /* ── Mobile menu toggle (CSS animation) ── */
+        const mobileBtn  = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon   = document.getElementById('menu-icon');
+        const closeIcon  = document.getElementById('close-icon');
+
+        mobileBtn.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            mobileBtn.setAttribute('aria-expanded', isOpen);
+            menuIcon.classList.toggle('hidden', isOpen);
+            closeIcon.classList.toggle('hidden', !isOpen);
+        });
+
+        /* ── Close mobile menu when a link is clicked ── */
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                mobileBtn.setAttribute('aria-expanded', 'false');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            });
+        });
+
+        /* ── Active nav link on scroll ── */
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a.nav-link');
+
+        function updateActiveLink() {
+            let current = '';
+            sections.forEach(section => {
+                if (window.scrollY >= section.offsetTop - 120) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active', 'text-sky-600');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active', 'text-sky-600');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveLink, { passive: true });
+        updateActiveLink();
+
+        /* ── Scroll-reveal ── */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
