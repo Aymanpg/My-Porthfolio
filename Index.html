@@ -289,24 +289,98 @@
             </div>
         </section>
 
+
         <!-- ─────────────── ABOUT ─────────────── -->
-        <section id="about" class="py-20 bg-white -mx-6 px-6 md:px-16 rounded-3xl fade-in">
-            <div class="max-w-4xl">
-                <h2 class="section-header text-4xl font-semibold heading-font mb-10">About Me</h2>
-                <div class="space-y-5 text-lg text-slate-600 leading-relaxed">
+        <section id="about" class="py-20 bg-white -mx-6 px-6 md:px-12 rounded-3xl fade-in">
+            <h2 class="section-header text-4xl font-semibold heading-font mb-10">About Me</h2>
+ 
+            <!-- Two-column layout: text left, highlights right -->
+            <div class="grid md:grid-cols-2 gap-10 items-start">
+ 
+                <!-- Left: Bio paragraphs -->
+                <div class="space-y-5 text-base text-slate-600 leading-relaxed">
                     <p>I am <strong class="text-slate-800 font-semibold">Ayman</strong>, a Computer Science and Engineering (CSE) student with a strong interest in Data Science, Artificial Intelligence, and intelligent software systems. Currently completing my undergraduate studies while building both academic and practical experience in software development, data analysis, and machine learning.</p>
                     <p>My academic background has given me a solid foundation in programming, databases, web technologies, computer networks, and machine learning. Alongside coursework, I enjoy working on real-world projects such as web-based systems and data-driven applications, focusing on writing clean, structured, and scalable code.</p>
                     <p>I am particularly interested in AI-based problem solving. My research includes smartphone-based skin disease detection using deep learning, reflecting my passion for applying technology to meaningful real-life problems.</p>
                     <p>I believe in continuous learning, ethical computing, and human-centered design. My goal is to grow as a data-driven engineer and researcher who can build impactful solutions through technology.</p>
-                </div>
-
-                <!-- Education badge -->
-                <div class="mt-8 inline-flex items-center gap-x-3 bg-sky-50 border border-sky-200 rounded-2xl px-5 py-3">
-                    <span class="text-2xl">🎓</span>
-                    <div>
-                        <p class="text-sm font-semibold text-sky-800">B.Sc. in Computer Science &amp; Engineering</p>
-                        <p class="text-xs text-sky-600 mt-0.5">Undergraduate Student &bull; Dhaka, Bangladesh</p>
+ 
+                    <!-- Education badge -->
+                    <div class="inline-flex items-center gap-x-3 bg-sky-50 border border-sky-200 rounded-2xl px-5 py-3 mt-2">
+                        <span class="text-xl">🎓</span>
+                        <div>
+                            <p class="text-sm font-semibold text-sky-800">B.Sc. in Computer Science &amp; Engineering</p>
+                            <p class="text-xs text-sky-600 mt-0.5">Undergraduate Student &bull; Dhaka, Bangladesh</p>
+                        </div>
                     </div>
+                </div>
+ 
+                <!-- Right: Highlights cards -->
+                <div class="grid grid-cols-1 gap-4">
+ 
+                    <!-- Interests -->
+                    <div class="bg-slate-50 border border-slate-100 rounded-2xl p-5">
+                        <div class="flex items-center gap-x-2 mb-3">
+                            
+                            <p class="font-semibold text-slate-800 text-sm">Core Interests</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-sky-100 text-sky-700 border border-sky-200 px-3 py-1 rounded-full font-medium">Artificial Intelligence</span>
+                            <span class="text-xs bg-sky-100 text-sky-700 border border-sky-200 px-3 py-1 rounded-full font-medium">Data Science</span>
+                            <span class="text-xs bg-sky-100 text-sky-700 border border-sky-200 px-3 py-1 rounded-full font-medium">Machine Learning</span>
+                            <span class="text-xs bg-sky-100 text-sky-700 border border-sky-200 px-3 py-1 rounded-full font-medium">Deep Learning</span>
+                            <span class="text-xs bg-sky-100 text-sky-700 border border-sky-200 px-3 py-1 rounded-full font-medium">Web Development</span>
+                            <span class="text-xs bg-sky-100 text-sky-700 border border-sky-200 px-3 py-1 rounded-full font-medium">Software Engineering</span>
+                        </div>
+                    </div>
+ 
+                    <!-- What I value -->
+                    <div class="bg-slate-50 border border-slate-100 rounded-2xl p-5">
+                        <div class="flex items-center gap-x-2 mb-3">
+                        
+                            <p class="font-semibold text-slate-800 text-sm">What I Value</p>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-x-2">
+                                <div class="w-1.5 h-1.5 rounded-full bg-sky-400 flex-shrink-0"></div>
+                                <p class="text-sm text-slate-600">Continuous learning &amp; self-improvement</p>
+                            </div>
+                            <div class="flex items-center gap-x-2">
+                                <div class="w-1.5 h-1.5 rounded-full bg-sky-400 flex-shrink-0"></div>
+                                <p class="text-sm text-slate-600">Ethical &amp; responsible computing</p>
+                            </div>
+                            <div class="flex items-center gap-x-2">
+                                <div class="w-1.5 h-1.5 rounded-full bg-sky-400 flex-shrink-0"></div>
+                                <p class="text-sm text-slate-600">Human-centered design &amp; clean code</p>
+                            </div>
+                            <div class="flex items-center gap-x-2">
+                                <div class="w-1.5 h-1.5 rounded-full bg-sky-400 flex-shrink-0"></div>
+                                <p class="text-sm text-slate-600">Real-world impact through technology</p>
+                            </div>
+                        </div>
+                    </div>
+ 
+                    <!-- Currently -->
+                    <div class="bg-gradient-to-br from-sky-50 to-blue-50 border border-sky-100 rounded-2xl p-5">
+                        <div class="flex items-center gap-x-2 mb-3">
+                            
+                            <p class="font-semibold text-slate-800 text-sm">Currently</p>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-start gap-x-2">
+                                <span class="text-xs bg-emerald-100 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-md font-semibold flex-shrink-0 mt-0.5">Open</span>
+                                <p class="text-sm text-slate-600">Seeking internships &amp; real-world projects</p>
+                            </div>
+                            <div class="flex items-start gap-x-2">
+                                <span class="text-xs bg-purple-100 text-purple-700 border border-purple-200 px-2 py-0.5 rounded-md font-semibold flex-shrink-0 mt-0.5">Study</span>
+                                <p class="text-sm text-slate-600">Completing B.Sc. in CSE</p>
+                            </div>
+                            <div class="flex items-start gap-x-2">
+                                <span class="text-xs bg-amber-100 text-amber-700 border border-amber-200 px-2 py-0.5 rounded-md font-semibold flex-shrink-0 mt-0.5">Build</span>
+                                <p class="text-sm text-slate-600">AI &amp; data-driven applications</p>
+                            </div>
+                        </div>
+                    </div>
+ 
                 </div>
             </div>
         </section>
@@ -475,41 +549,88 @@
             </div>
         </section>
 
-        <!-- ─────────────── SKILLS ─────────────── -->
+        
+            <!-- ─────────────── SKILLS ─────────────── -->
         <section id="skills" class="py-20 bg-slate-900 text-white rounded-3xl -mx-6 px-6 md:px-16 fade-in">
-            <h2 class="section-header light text-4xl font-semibold heading-font mb-12 text-white">Technical Skills</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-
-                <div class="skill-card bg-white/10 border border-white/10 rounded-2xl p-5 text-center">
-                    <div class="text-2xl mb-3">💻</div>
-                    <p class="font-semibold text-sm mb-2">Languages</p>
-                    <p class="text-slate-400 text-xs leading-relaxed">Python &bull; Java &bull; C# &bull; JavaScript</p>
+            <h2 class="section-header light text-4xl font-semibold heading-font mb-4 text-white">Technical Skills</h2>
+            <p class="text-slate-400 text-base mb-10 mt-6">A breakdown of the languages, frameworks, and tools I work with.</p>
+ 
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+ 
+                <!-- Programming Languages -->
+                <div class="skill-card bg-white/10 border border-white/10 rounded-2xl p-6">
+                    <div class="flex items-center gap-x-3 mb-4">
+                        <div class="w-10 h-10 bg-sky-500/20 rounded-xl flex items-center justify-center text-lg flex-shrink-0">💻</div>
+                        <p class="font-semibold text-sm text-white">Programming Languages</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-sky-500/20 text-sky-300 border border-sky-500/30 px-2.5 py-1 rounded-lg font-medium">C++</span>
+                        <span class="text-xs bg-sky-500/20 text-sky-300 border border-sky-500/30 px-2.5 py-1 rounded-lg font-medium">Python</span>
+                        <span class="text-xs bg-sky-500/20 text-sky-300 border border-sky-500/30 px-2.5 py-1 rounded-lg font-medium">R</span>
+                        <span class="text-xs bg-sky-500/20 text-sky-300 border border-sky-500/30 px-2.5 py-1 rounded-lg font-medium">JavaScript</span>
+                        <span class="text-xs bg-sky-500/20 text-sky-300 border border-sky-500/30 px-2.5 py-1 rounded-lg font-medium">PHP</span>
+                        <span class="text-xs bg-sky-500/20 text-sky-300 border border-sky-500/30 px-2.5 py-1 rounded-lg font-medium">C#</span>
+                        <span class="text-xs bg-sky-500/20 text-sky-300 border border-sky-500/30 px-2.5 py-1 rounded-lg font-medium">React (Basic)</span>
+                    </div>
                 </div>
-
-                <div class="skill-card bg-white/10 border border-white/10 rounded-2xl p-5 text-center">
-                    <div class="text-2xl mb-3">🌐</div>
-                    <p class="font-semibold text-sm mb-2">Web Development</p>
-                    <p class="text-slate-400 text-xs leading-relaxed">HTML &bull; CSS &bull; PHP &bull; MySQL</p>
+ 
+                <!-- Web Development -->
+                <div class="skill-card bg-white/10 border border-white/10 rounded-2xl p-6">
+                    <div class="flex items-center gap-x-3 mb-4">
+                        <div class="w-10 h-10 bg-purple-500/20 rounded-xl flex items-center justify-center text-lg flex-shrink-0">🌐</div>
+                        <p class="font-semibold text-sm text-white">Web Development</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2.5 py-1 rounded-lg font-medium">HTML</span>
+                        <span class="text-xs bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2.5 py-1 rounded-lg font-medium">CSS</span>
+                        <span class="text-xs bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2.5 py-1 rounded-lg font-medium">Tailwind CSS</span>
+                    </div>
                 </div>
-
-                <div class="skill-card bg-white/10 border border-white/10 rounded-2xl p-5 text-center">
-                    <div class="text-2xl mb-3">📊</div>
-                    <p class="font-semibold text-sm mb-2">Data Analysis</p>
-                    <p class="text-slate-400 text-xs leading-relaxed">Pandas &bull; NumPy &bull; Matplotlib</p>
+ 
+                <!-- Database -->
+                <div class="skill-card bg-white/10 border border-white/10 rounded-2xl p-6">
+                    <div class="flex items-center gap-x-3 mb-4">
+                        <div class="w-10 h-10 bg-amber-500/20 rounded-xl flex items-center justify-center text-lg flex-shrink-0">🗄️</div>
+                        <p class="font-semibold text-sm text-white">Database</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2.5 py-1 rounded-lg font-medium">MySQL</span>
+                        <span class="text-xs bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2.5 py-1 rounded-lg font-medium">XAMPP</span>
+                        <span class="text-xs bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2.5 py-1 rounded-lg font-medium">phpMyAdmin</span>
+                        <span class="text-xs bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2.5 py-1 rounded-lg font-medium">Oracle SQL</span>
+                    </div>
                 </div>
-
-                <div class="skill-card bg-white/10 border border-white/10 rounded-2xl p-5 text-center">
-                    <div class="text-2xl mb-3">🤖</div>
-                    <p class="font-semibold text-sm mb-2">Machine Learning</p>
-                    <p class="text-slate-400 text-xs leading-relaxed">Scikit-learn &bull; TensorFlow &bull; XGBoost</p>
+ 
+                <!-- Data Science -->
+                <div class="skill-card bg-white/10 border border-white/10 rounded-2xl p-6">
+                    <div class="flex items-center gap-x-3 mb-4">
+                        <div class="w-10 h-10 bg-emerald-500/20 rounded-xl flex items-center justify-center text-lg flex-shrink-0">📊</div>
+                        <p class="font-semibold text-sm text-white">Data Science</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-1 rounded-lg font-medium">Pandas</span>
+                        <span class="text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-1 rounded-lg font-medium">NumPy</span>
+                        <span class="text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-1 rounded-lg font-medium">Matplotlib</span>
+                        <span class="text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-1 rounded-lg font-medium">TensorFlow</span>
+                    </div>
                 </div>
-
-                <div class="skill-card bg-white/10 border border-white/10 rounded-2xl p-5 text-center">
-                    <div class="text-2xl mb-3">🛠️</div>
-                    <p class="font-semibold text-sm mb-2">Tools</p>
-                    <p class="text-slate-400 text-xs leading-relaxed">Git &bull; GitHub &bull; VS Code</p>
+ 
+                <!-- Tools & Others -->
+                <div class="skill-card bg-white/10 border border-white/10 rounded-2xl p-6 sm:col-span-2 lg:col-span-2">
+                    <div class="flex items-center gap-x-3 mb-4">
+                        <div class="w-10 h-10 bg-pink-500/20 rounded-xl flex items-center justify-center text-lg flex-shrink-0">🛠️</div>
+                        <p class="font-semibold text-sm text-white">Tools &amp; Others</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-pink-500/20 text-pink-300 border border-pink-500/30 px-2.5 py-1 rounded-lg font-medium">Git</span>
+                        <span class="text-xs bg-pink-500/20 text-pink-300 border border-pink-500/30 px-2.5 py-1 rounded-lg font-medium">GitHub</span>
+                        <span class="text-xs bg-pink-500/20 text-pink-300 border border-pink-500/30 px-2.5 py-1 rounded-lg font-medium">VS Code</span>
+                        <span class="text-xs bg-pink-500/20 text-pink-300 border border-pink-500/30 px-2.5 py-1 rounded-lg font-medium">Visual Studio</span>
+                        <span class="text-xs bg-pink-500/20 text-pink-300 border border-pink-500/30 px-2.5 py-1 rounded-lg font-medium">Overleaf</span>
+                        <span class="text-xs bg-pink-500/20 text-pink-300 border border-pink-500/30 px-2.5 py-1 rounded-lg font-medium">Figma (Basic)</span>
+                    </div>
                 </div>
-
+ 
             </div>
         </section>
 
